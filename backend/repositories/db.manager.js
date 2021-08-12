@@ -29,6 +29,7 @@ module.exports = (function dbManager() {
 		const userCount = await isRandomUsersExist();
 		if (userCount == 0) {
 			for (let i = 0; i < 5; i++) {
+				console.log('adding user ', i + 1);
 				const user = {
 					firstname: faker.name.firstName(),
 					lastname: faker.name.lastName(),
