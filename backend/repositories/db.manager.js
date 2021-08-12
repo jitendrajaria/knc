@@ -34,7 +34,7 @@ module.exports = (function dbManager() {
 					lastname: faker.name.lastName(),
 					phoneNumber: faker.phone.phoneFormats(),
 				};
-				saveUser(user);
+				await saveUser(user);
 			}
 		}
 	}
