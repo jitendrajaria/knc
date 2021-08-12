@@ -1,0 +1,29 @@
+{
+	"name": "kisan_network_test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node api"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@vonage/server-sdk": "^2.10.10",
+		"bcrypt": "^5.0.1",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"eslint": "^7.32.0",
+		"express": "^4.17.1",
+		"faker": "^5.5.3",
+		"joi": "^17.4.2",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.1",
+		"mongoose": "^5.13.5",
+		"prettier": "^2.3.2"
+	},
+	"devDependencies": {
+		"@types/mongoose": "^5.11.97"
+	}
+}
