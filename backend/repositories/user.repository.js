@@ -17,7 +17,7 @@ module.exports = (() => {
 	}
 
 	async function isRandomUsersExist() {
-		return await UserModel.find({}, { limit: 5 });
+		return await UserModel.count({});
 	}
 
 	return {

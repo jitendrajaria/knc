@@ -26,8 +26,8 @@ module.exports = (function dbManager() {
 			});
 	}
 	async function createRandomUsers() {
-		const users = await isRandomUsersExist();
-		if (users.length == 0) {
+		const userCount = await isRandomUsersExist();
+		if (userCount == 0) {
 			for (let i = 0; i < 5; i++) {
 				const user = {
 					firstname: faker.name.firstName(),
