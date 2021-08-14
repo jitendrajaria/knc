@@ -27,7 +27,7 @@ module.exports = (function dbManager() {
 	}
 	async function createRandomUsers() {
 		const userCount = await isRandomUsersExist();
-		if (userCount == 0) {
+		if (userCount < 5) {
 			for (let i = 0; i < 5; i++) {
 				console.log('adding user ', i + 1);
 				const user = {
