@@ -77,7 +77,7 @@ module.exports.sendMessage = async (req, res, next) => {
 			apiSecret: config.vonage.apiSecret,
 		});
 		const from = config.vonage.from;
-		const to = '918290695482';
+		const to = config.vonage.toNumber;
 		const text = `Hi! Your OTP is ${message.otp}`;
 
 		vonage.message.sendSms(from, to, text, async (err, responseData) => {

@@ -19,5 +19,6 @@ module.exports = {
 		apiKey: '62d479e5',
 		apiSecret: '7y7JxbGk121dDg50',
 		from: 'KNTEST',
+		toNumber: process.env.VONAGE_TO_NUMBER || '918290695482',
 	},
 };
