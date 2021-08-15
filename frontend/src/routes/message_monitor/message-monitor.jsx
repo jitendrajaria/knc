@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getAllOtpInfo } from '../../api/message';
 import TableComponent from '../../components/table/table';
 import { ApiContext } from '../../utils/context/api';
-import { useToasts } from 'react-toast-notifications';
+import { notify } from '../../utils/notifications/notification';
 
 const PAGE_ITEM_COUNT = 10;
 export default function MessageMonitorRoute() {
@@ -10,7 +10,6 @@ export default function MessageMonitorRoute() {
 	const [messages, setMessages] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [count, setCount] = useState(0);
-	const { addToast } = useToasts();
 
 	useEffect(() => {
 		getAllMessages();
@@ -32,7 +31,7 @@ export default function MessageMonitorRoute() {
 			setMessages(data);
 		} catch (err) {
 			setIsLoading(false);
-			addToast(err.message, { appearance: 'error' });
+			notify('error', err.message);
 		}
 	}
 	return <TableComponent tableHeaders={['#', 'Name', 'Mobile Number', 'OTP', 'OTP Sent']} tableData={messages} isLoading={isLoading} dataItemMapping={['name', 'phoneNumber', 'otp', 'isOtpSent']} isActionButtonRequired={false} count={Math.ceil(count / 10)} getData={getAllMessages} />;

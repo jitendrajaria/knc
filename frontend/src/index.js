@@ -4,10 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppRoutes from './routes';
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<AppRoutes />
+		<NotificationContainer />
 	</React.StrictMode>,
 	document.getElementById('root')
 );

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useToasts } from 'react-toast-notifications';
 
 import { auth } from '../../api/auth';
 import ButtonComponent from '../../components/button/button';
@@ -9,6 +8,7 @@ import InputComponent from '../../components/input/input';
 import TextLabelComponent from '../../components/label/label';
 import LoginFormWrapperComponent from '../../components/login_form_wrapper/login-form-wrapper';
 import LogoComponent from '../../components/logo/logo';
+import { notify } from '../../utils/notifications/notification';
 
 export default function LoginRoute() {
 	const [username, setUsername] = useState('');
@@ -17,7 +17,6 @@ export default function LoginRoute() {
 	const [formError, setFormError] = useState({});
 
 	const history = useHistory();
-	const { addToast } = useToasts();
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
@@ -31,7 +30,7 @@ export default function LoginRoute() {
 				})
 				.catch((err) => {
 					setIsLoading(false);
-					addToast(err.message, { appearance: 'error' });
+					notify('error', err.message);
 				});
 		}
 	}

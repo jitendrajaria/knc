@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useToasts } from 'react-toast-notifications';
 import { getOtp, postMessage } from '../../api/message';
 import { getAllUsers } from '../../api/user';
 import ModalComponent from '../../components/modal/modal';
 import TableComponent from '../../components/table/table';
 import { ApiContext } from '../../utils/context/api';
+import { notify } from '../../utils/notifications/notification';
 
 export default function HomeRoute() {
 	const id = useContext(ApiContext);
@@ -17,7 +17,6 @@ export default function HomeRoute() {
 	const [isLoadingOtp, setIsLoadingOtp] = useState(false);
 	const [otpInfo, setOtpinfo] = useState({});
 	const [isSendingMessage, setIsSendingMessage] = useState(false);
-	const { addToast } = useToasts();
 
 	useEffect(() => {
 		getUsers();
@@ -39,7 +38,7 @@ export default function HomeRoute() {
 			setIsLoading(false);
 		} catch (err) {
 			setIsLoading(false);
-			addToast(err.message, { appearance: 'error' });
+			notify('error', err.message);
 		}
 	}
 	async function generateOtp(user) {
@@ -51,7 +50,7 @@ export default function HomeRoute() {
 			showModal();
 		} catch (err) {
 			setIsLoadingOtp(false);
-			addToast(err.message, { appearance: 'error' });
+			notify('error', err.message);
 		}
 	}
 
@@ -61,10 +60,11 @@ export default function HomeRoute() {
 			setIsSendingMessage(false);
 			await postMessage(id, userId, messageId);
 			hideModal();
+			notify('warning', `Your message has been queued to sent to default number, Number have to be registered in test mode to sent the message.`);
 		} catch (err) {
 			setIsSendingMessage(false);
 			hideModal();
-			addToast(err.message, { appearance: 'error' });
+			notify('error', err.message);
 		}
 	}
 
