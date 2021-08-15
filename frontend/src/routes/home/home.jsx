@@ -60,7 +60,7 @@ export default function HomeRoute() {
 			setIsSendingMessage(false);
 			await postMessage(id, userId, messageId);
 			hideModal();
-			notify('warning', `Your message has been queued to sent to default number, Number have to be registered in test mode to sent the message.`);
+			notify('warning', `Your message has been queued to sent to default number, Number have to be registered in test mode to sent the message.`, 10000);
 		} catch (err) {
 			setIsSendingMessage(false);
 			hideModal();
